@@ -7,7 +7,7 @@ import { clientDataSelector, isLoginSelector, loginSelector, passwordSelector, v
 const AppLogin = ({ getClientData, clientData, setIsLogin, isLogin, setLoginnedUser, login, setLogin, password, setPassword, authData }) => {
     console.log(isLogin, login, password)
 
-    const [ error, setError ] = useState("");
+    const [ error, setError ] = useState("")
 
     const dataRefresher = () => {
         setLogin("")
@@ -21,7 +21,7 @@ const AppLogin = ({ getClientData, clientData, setIsLogin, isLogin, setLoginnedU
                 setLoginnedUser(login)
                 setTimeout(() => setIsLogin(true), 300)
                 setTimeout(() => window.location.reload(), 310)
-                setError("");
+                setError("")
             } else {
                 setError("Invalid login or password!")
             }
@@ -42,7 +42,7 @@ const AppLogin = ({ getClientData, clientData, setIsLogin, isLogin, setLoginnedU
 
     return(
         <div className="messanger">
-            <form className="login-form" onSubmit={ e => onLogin(e)}>
+            <form className="login-form" onKeyDown={ e => e.keyCode === 13 ? onLogin(e): null } onSubmit={ e => onLogin(e)}>
                 <label htmlFor="email">LOGIN</label>
                 <input className="login-form_input" type="login" name="login" id="email" placeholder="Login" onChange={handleChange} value={login} />
                 <label htmlFor="Password">PASSWORD</label>

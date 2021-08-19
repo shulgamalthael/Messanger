@@ -12,7 +12,7 @@ const Header = ({ currentCompId, avatarUrl, isLogin, setIsLogin }) => {
 
     return(
         <>
-            <img className="companion-avatar" src={avatarUrl} alt="Companion avatar" onClick={ () => handleLogout() } />
+            <img className="companion-avatar" style={{ margin: "1%", width: "4%", borderRadius: "50%" }} src={avatarUrl} alt="Companion avatar" onClick={ () => handleLogout() } />
             <div className="companion-name">
                 <p className="companion-name-text">{currentCompId}</p>
             </div>

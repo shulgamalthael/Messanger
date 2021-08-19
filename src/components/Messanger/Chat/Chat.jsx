@@ -1,7 +1,17 @@
 import React, { useState } from 'react';
 import Header from './Header/Header.jsx';
 import Message from './Message/Message.jsx';
+import Modal from "../Chat/Message/Modal/Modal"
 const Chat = ({ clientMessages, currentCompId, currentClientData, avatarUrl, setMessage }) => {
+
+    const [ isModal, setIsModal ] = useState(false);
+
+    const showModal = ( e, id ) => {
+        e.stopPropagation();
+        if ( id == e.target.id ) {
+            setIsModal(!isModal);
+        }
+    }
 
     return(
         <>
@@ -19,15 +29,30 @@ const Chat = ({ clientMessages, currentCompId, currentClientData, avatarUrl, set
                     const toggleUserStyle = mess.sender === currentCompId ? "user2": "user1";
 
                     return(
-                        <Message 
-                            key={newId} 
-                            {...mess} 
-                            toggleUserStyle={toggleUserStyle}
-                            setMessage={setMessage}
-                            clientMessages={clientMessages}
-                            currentClientData={currentClientData}
-                            currentCompId={currentCompId}
-                        />
+                        <>
+                            <Message 
+                                key={newId} 
+                                {...mess} 
+                                toggleUserStyle={toggleUserStyle}
+                                setMessage={setMessage}
+                                clientMessages={clientMessages}
+                                currentClientData={currentClientData}
+                                currentCompId={currentCompId}
+                                onClick={ e => showModal(e, newId) }
+                            />
+                            {isModal 
+                                ? 
+                                    <Modal 
+                                        // message={message} 
+                                        // setMessage={setMessage} 
+                                        setIsModal={setIsModal}
+                                        clientMessages={clientMessages} 
+                                        currentClientData={currentClientData} 
+                                        currentCompId={currentCompId}
+                                    /> 
+                                : null
+                            }
+                        </>
                     )
                 })}
             </div>

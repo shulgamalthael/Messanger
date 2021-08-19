@@ -84,7 +84,7 @@ const Messanger = ({ CompanionData, clientData, currentCompId, ws, currentUser, 
 
             updateUserConvarsation( currentClientData.id, newData )
             setMessage('')
-            setTimeout(() => window.location.reload(), 100)
+            setTimeout(() => window.location.reload(), 200)
         }
     }
 
@@ -107,7 +107,7 @@ const Messanger = ({ CompanionData, clientData, currentCompId, ws, currentUser, 
 
             updateUserConvarsation( currentClientData.id, newData )
             setCompanionName('')
-            // window.location.reload()
+            setTimeout(() => window.location.reload(), 300)
         }
     }
 
@@ -150,6 +150,7 @@ const Messanger = ({ CompanionData, clientData, currentCompId, ws, currentUser, 
                         createConversation={createConversation}
                         currentCompanion={currentCompanion}
                         setCurrentCompanion={setCurrentCompanion}
+                        currentCompId={currentCompId}
                     />
                 </div>
                 <div className="currentChat">

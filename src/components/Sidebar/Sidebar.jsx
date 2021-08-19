@@ -1,17 +1,18 @@
-import React from "react";
-import Conversation from "./Conversation/Conversation.jsx";
+import React from "react"
+import Conversation from "./Conversation/Conversation.jsx"
 
-const Sidebar = ({ conversationsList, companionName, setCompanionName, createConversation, setCurrentCompanion }) => {
+const Sidebar = ({ conversationsList, companionName, setCompanionName, createConversation, setCurrentCompanion, currentCompId }) => {
 
     const handleChange = e => {
-        setCompanionName(e.target.value);
+        setCompanionName(e.target.value)
     }
 
     const onEnterPress = e => {
         if ( e.keyCode === 13 ) {
-            createConversation();
+            createConversation()
         }
     }
+
 
     return(
         <>
@@ -32,6 +33,7 @@ const Sidebar = ({ conversationsList, companionName, setCompanionName, createCon
                             key={conversation} 
                             conversation={conversation} 
                             value={companionName} 
+                            currentCompId={currentCompId}
                             setCurrentCompanion={setCurrentCompanion} 
                         />
                     )
@@ -41,4 +43,4 @@ const Sidebar = ({ conversationsList, companionName, setCompanionName, createCon
     )
 }
 
-export default Sidebar;
+export default Sidebar
